@@ -1,0 +1,16 @@
+/* Logo Styling */
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+/* Navbar Hover Effect */
+.navbar-nav .nav-link {
+    color: white;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f8b400;
+    transform: scale(1.1);
+}

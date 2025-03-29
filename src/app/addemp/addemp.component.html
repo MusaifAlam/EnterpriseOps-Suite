@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="container mt-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-4 shadow-lg rounded bg-light">
+            <h3 class="text-center text-primary mb-4">Employee Form</h3>
+            <form #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-bold">Name:</label>
+                    <input [(ngModel)]="addData.name" #name="ngModel" name="name" type="text" class="form-control" placeholder="Enter the Name" required>
+                    <div *ngIf="name.invalid && name.touched" class="text-danger">Name is required</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="status" class="form-label fw-bold">Status:</label>
+                    <select [(ngModel)]="addData.status" #status="ngModel" name="status" class="form-select" required>
+                        <option value="" disabled>Select Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Suspend">Suspend</option>
+                    </select>
+                    <div *ngIf="status.invalid && status.touched" class="text-danger">Status is required</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="department" class="form-label fw-bold">Department:</label>
+                    <input [(ngModel)]="addData.department" #department="ngModel" name="department" type="text" class="form-control" placeholder="Enter the Department" required>
+                    <div *ngIf="department.invalid && department.touched" class="text-danger">Department is required</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="mobileno" class="form-label fw-bold">Mobile No:</label>
+                    <input [(ngModel)]="addData.mobileno" #mobileno="ngModel" name="mobileno" type="tel" class="form-control" placeholder="Enter the Mobile No" required>
+                    <div *ngIf="mobileno.invalid && mobileno.touched" class="text-danger">Mobile No is required</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="emailid" class="form-label fw-bold">Email Id:</label>
+                    <input [(ngModel)]="addData.emailid" #emailid="ngModel" [pattern]="EMAIL_PATTERN" name="emailid" type="email" class="form-control" placeholder="Enter the Email Id" required email>
+                    <div *ngIf="emailid.invalid && emailid.touched" class="text-danger">Enter a valid Email Id</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="salary" class="form-label fw-bold">Salary:</label>
+                    <input [(ngModel)]="addData.salary" #salary="ngModel" name="salary" type="number" class="form-control" placeholder="Enter the Salary" required min="1">
+                    <div *ngIf="salary.invalid && salary.touched" class="text-danger">Salary must be greater than zero</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="country" class="form-label fw-bold">Country:</label>
+                    <select [(ngModel)]="addData.country" #country="ngModel" name="country" class="form-select" required>
+                        <option value="" disabled>Select Country</option>
+                        <option *ngFor="let item of allCountry" [ngValue]="item">{{ item.cname }}</option>
+                    </select>
+                    <div *ngIf="country.invalid && country.touched" class="text-danger">Country is required</div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="myForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

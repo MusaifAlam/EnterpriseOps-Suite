@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h2 class="text-center">Project Details</h2>
+  
+    <div *ngIf="projectId !== 0" class="card mt-4 p-4 shadow">
+      <h5>{{ projectName }}</h5>
+  
+      <!-- Display description based on projectId -->
+      <p class="text-muted" [ngSwitch]="projectId">
+        <span *ngSwitchCase="1">This is the description for Project A.</span>
+        <span *ngSwitchCase="2">This is the description for Project B.</span>
+        <span *ngSwitchCase="3">{{projects[3].name}}</span>
+        <span *ngSwitchDefault>Description not available.</span>
+      </p>
+  
+      <a routerLink="/about" class="btn btn-secondary mt-3">Back to Projects</a>
+    </div>
+  
+    <div *ngIf="projectId === 0" class="text-center text-danger mt-4">
+      <p>Project not found!</p>
+    </div>
+  </div>
+  

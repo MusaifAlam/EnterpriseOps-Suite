@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container my-5">
+  <h2 class="text-center text-primary fw-bold">Our Services</h2>
+  <p class="text-center text-muted">We provide a wide range of IT solutions to meet your business needs.</p>
+  
+  <div class="row mt-4">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let service of services">
+      <div class="card service-card">
+        <div class="card-body text-center">
+          <div class="icon-container">
+            <i class="bi {{ service.icon }}"></i>
+          </div>
+          <h5 class="card-title text-primary fw-bold">{{ service.title }}</h5>
+          <p class="card-text text-muted">{{ service.description }}</p>
+          <button routerLink="/About" class="btn btn-primary btn-sm rounded-pill px-4">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <app-footer></app-footer>
+  

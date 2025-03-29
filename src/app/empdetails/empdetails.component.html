@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="container mt-2 py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card myrgb p-3">
+        <div class="card-body">
+          <h4 class="card-title text-center">{{ empobj.name }}</h4>
+          <hr>
+          <div class="card-text">
+            <p><strong>ID:</strong> {{ empobj.id }}</p>
+            <p><strong>Department:</strong> {{ empobj.department }}</p>
+            <p><strong>Status:</strong>
+              <span [ngClass]="{
+                                'badge': true,
+                                'rounded-pill': true,
+                                'bg-success': empobj.status.toLowerCase() === 'active',
+                                'bg-warning': empobj.status.toLowerCase() === 'inactive',
+                                'bg-danger': empobj.status.toLowerCase() === 'suspend'
+                            }" class="p-2">
+                {{ empobj.status }}
+              </span>
+            </p>
+            <p><strong>Mobile No:</strong> {{ empobj.mobileno }}</p>
+            <p><strong>Email ID:</strong> {{ empobj.emailid }}</p>
+            <p><strong>Country:</strong> {{ empobj.country.cname }} ({{ empobj.country.cid }})</p>
+            <p><strong>Created Date:</strong> {{ empobj.createdDate | date:"medium" }}</p>
+            <p><strong>Created By:</strong> {{ empobj.createdBy }}</p>
+            <p><strong>Updated Date:</strong> {{ empobj.updatedDate | date:"medium" }}</p>
+            <p><strong>Updated By:</strong> {{ empobj.updatedBy }}</p>
+            <p><strong>Salary:</strong> {{ empobj.salary }}</p>
+          </div>
+          <div class="text-center mt-3">
+            <button [routerLink]="['/updateEmp',empobj.id]" class="btn btn-primary me-2">Update Employee</button>
+            <button routerLink="/home" class="btn btn-warning">Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
